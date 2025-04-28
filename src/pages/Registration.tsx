@@ -53,7 +53,7 @@ const Registration: React.FC = () => {
                             placeholder="Enter your username"
                             required={true}
                             value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            onChange={(e:any) => setUsername(e.target.value)}
                         />
                     </div>
                     <div>
@@ -65,7 +65,7 @@ const Registration: React.FC = () => {
                             placeholder="Enter your email"
                             required={true}
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={(e:any) => setEmail(e.target.value)}
                         />
                     </div>
                     <div>
@@ -77,7 +77,7 @@ const Registration: React.FC = () => {
                             placeholder="Enter your password"
                             required={true}
                             value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            onChange={(e:any) => setPassword(e.target.value)}
                         />
                     </div>
                     <div>
@@ -89,7 +89,7 @@ const Registration: React.FC = () => {
                             placeholder="Confirm your password"
                             required={true}
                             value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            onChange={(e:any) => setConfirmPassword(e.target.value)}
                         />
                     </div>
                     <button

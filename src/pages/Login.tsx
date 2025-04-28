@@ -1,27 +1,28 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Input from "../components/Input";
-import { Link, useNavigation } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 
 type loginrequest = {
-    email: string;
+    emailorusername: string;
     password: string;
 }
 
 const Login: React.FC = () => {
-    const [email, setEmail] = useState<string>('');
+    const [emailorusername, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const router = useNavigation()
+    const router = useNavigate();
 
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Login clicked', { email, password });
-        const request: loginrequest ={ email, password}
-        const response = await axios.post("http://localhost:8000/client-api/v1/auth/registration",  {
-            request,
-        })
+        console.log('Login clicked', { emailorusername, password });
+        const request: loginrequest ={ emailorusername, password}
+        const response = await axios.post("http://localhost:8000/client-api/v1/auth/login",request)
         console.log('response', response)
+        if(response.status === 200){
+            router("/registration")
+        }
     };
 
     return (
@@ -37,6 +38,7 @@ const Login: React.FC = () => {
                         type="text"
                         placeholder="Enter your email or username"
                         required={true}
+                        onChange={(e:any) => setEmail(e.target.value)}
                         // register={register}
                         // error={errors?.email?.message?.toString()}
                     />
@@ -49,6 +51,7 @@ const Login: React.FC = () => {
                         type="password"
                         placeholder="Enter your password"
                         required={true}
+                        onChange={(e:any) => setPassword(e.target.value)}
                         // register={register}
                         // error={errors?.email?.message?.toString()}
                     />
