@@ -32,7 +32,9 @@ const Registration: React.FC = () => {
             const response = await axios.post("http://localhost:8000/client-api/v1/auth/registration", request);
             console.log('response', response);
             alert('Registration successful!');
-            navigate("/login");
+            if(response.status === 200){
+                navigate("/");
+            }
         } catch (error) {
             console.error('Registration failed', error);
             alert('Registration failed. Please try again.');

@@ -11,7 +11,7 @@ type loginrequest = {
 const Login: React.FC = () => {
     const [emailorusername, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const router = useNavigate();
+    const navigate = useNavigate();
 
 
     const handleLogin = async (e: React.FormEvent) => {
@@ -21,7 +21,7 @@ const Login: React.FC = () => {
         const response = await axios.post("http://localhost:8000/client-api/v1/auth/login",request)
         console.log('response', response)
         if(response.status === 200){
-            router("/registration")
+            navigate("/registration")
         }
     };
 
