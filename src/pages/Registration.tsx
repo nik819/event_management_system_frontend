@@ -8,6 +8,7 @@ type RegistrationRequest = {
     email: string;
     password: string;
     confirmPassword: string;
+    dateOfBirth: string;
 };
 
 const Registration: React.FC = () => {
@@ -15,6 +16,7 @@ const Registration: React.FC = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
+    const [dateOfBirth, setdateOfBirth] = useState<string>('');
     const navigate = useNavigate();
 
     const handleRegistration = async (e: React.FormEvent) => {
@@ -26,7 +28,7 @@ const Registration: React.FC = () => {
             return;
         }
 
-        const request: RegistrationRequest = { username, email, password, confirmPassword };
+        const request: RegistrationRequest = { username, email, password, confirmPassword, dateOfBirth };
 
         try {
             const response = await axios.post("http://localhost:8000/client-api/v1/auth/registration", request);
@@ -94,6 +96,16 @@ const Registration: React.FC = () => {
                             onChange={(e:any) => setConfirmPassword(e.target.value)}
                         />
                     </div>
+                    <Input
+                        label="Date Of Birth"
+                        preIcon="calendar"
+                        name="dateOfBirth"
+                        type="date"
+                        placeholder="Enter your date of birth"
+                        required={true}
+                        value={dateOfBirth}
+                        onChange={(e: any) => setdateOfBirth(e.target.value)}
+                    />
                     <button
                         type="submit"
                         className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300"
