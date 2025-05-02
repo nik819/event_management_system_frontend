@@ -3,8 +3,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 const Home = () => {
     return <>
-                <Header/>
-        <div className="mx-10"> 
+        <Header />
+        <div className="mx-10 mt-[65px]">
             <div className="container p-8 mx-auto xl:px-0 flex flex-wrap ">
                 <div className="flex items-center w-full lg:w-1/2">
                     <div className="max-w-2xl mb-8">
@@ -448,7 +448,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     </>;
 };
