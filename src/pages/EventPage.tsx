@@ -1,9 +1,6 @@
 import React from "react";
 import { Event } from "../components/type/Event";
-import EventBanner from "../components/EventBanner";
 import EventDetails from "../components/EventDetails";
-import BookingSection from "../components/BookingSection";
-import RelatedEvents from "../components/RelatedEvents";
 
 export const events: Event[] = [
   {
