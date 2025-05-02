@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Input from "../components/Input";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 type loginrequest = {
     emailorusername: string;
@@ -17,55 +17,53 @@ const Login: React.FC = () => {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         console.log('Login clicked', { emailorusername, password });
-        const request: loginrequest ={ emailorusername, password}
-        const response = await axios.post("http://localhost:8000/client-api/v1/auth/login",request)
+        const request: loginrequest = { emailorusername, password }
+        const response = await axios.post("http://localhost:8000/client-api/v1/auth/login", request)
         console.log('response', response)
-        if(response.status === 200){
+        if (response.status === 200) {
             navigate("/registration")
         }
     };
 
     return (
-        <div className="h-screen flex items-center justify-center bg-gray-100">
-            <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
-                <h2 className="text-3xl font-bold text-center mb-6">Login</h2>
-                <form onSubmit={handleLogin} className="space-y-6">
+        <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+            <div className="bg-white shadow-xl rounded-2xl p-8 sm:p-10 w-full max-w-md">
+                <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-6">Sign in to your account</h2>
+                <form onSubmit={handleLogin} className="space-y-5">
                     <div>
-                    <Input
-                        label="Email or Username"
-                        preIcon="mail"
-                        name="email"
-                        type="text"
-                        placeholder="Enter your email or username"
-                        required={true}
-                        onChange={(e:any) => setEmail(e.target.value)}
-                        // register={register}
-                        // error={errors?.email?.message?.toString()}
-                    />
+                        <Input
+                            label="Email or Username"
+                            preIcon="mail"
+                            name="email"
+                            type="text"
+                            placeholder="Enter your email or username"
+                            required={true}
+                            onChange={(e: any) => setEmail(e.target.value)}
+                        />
                     </div>
                     <div>
-                    <Input
-                        label="Password"
-                        preIcon="lock-closed"
-                        name="password"
-                        type="password"
-                        placeholder="Enter your password"
-                        required={true}
-                        onChange={(e:any) => setPassword(e.target.value)}
-                        // register={register}
-                        // error={errors?.email?.message?.toString()}
-                    />
+                        <Input
+                            label="Password"
+                            preIcon="lock-closed"
+                            name="password"
+                            type="password"
+                            placeholder="Enter your password"
+                            required={true}
+                            onChange={(e: any) => setPassword(e.target.value)}
+                        />
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300"
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-lg shadow-sm transition duration-300"
                     >
                         Login
                     </button>
                 </form>
-                <div className="flex justify-end">
-                    <span>Create new account</span>&nbsp;
-                    <Link to="/registration" className="text-blue-500">Register</Link>
+                <div className="mt-6 text-sm text-center text-gray-600">
+                    Don't have an account?&nbsp;
+                    <Link to="/registration" className="text-blue-500 hover:underline font-medium">
+                        Register
+                    </Link>
                 </div>
             </div>
         </div>

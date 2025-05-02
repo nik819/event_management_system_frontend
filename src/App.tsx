@@ -3,6 +3,8 @@ import Root from "./pages/Root";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import Home from "./pages/Home";
+import EventPage from "./pages/EventPage";
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -19,7 +21,11 @@ const router = createBrowserRouter([
             {
               path: "/registration",
               element: <Registration />,
-          },
+            },
+            {
+                path: "/event",
+                element: <EventPage  />,
+              },
             
         ],
     },

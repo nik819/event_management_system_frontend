@@ -81,10 +81,10 @@ const Header = () => {
                             Home
                         </Link>
                     </li>
-                        <Link to="" className="" onClick={()=> setauthOpen(!authOpen)}>
-                            Authentication
-                        </Link>
-                        {authOpen &&
+                    <Link to="" className="" onClick={() => setauthOpen(!authOpen)}>
+                        Authentication
+                    </Link>
+                    {authOpen &&
                         <ul className="absolute top-[70%] space-y-1 right-[20%] dark:bg-slate-800 dark:text-white bg-white rounded-md">
                             <li className="dark:hover-bg-slate-900 hover:bg-gray-100">
                                 <Link to="/login">Login</Link>
@@ -99,13 +99,13 @@ const Header = () => {
                                 <Link to="/ResetPassword">ResetPassword</Link>
                             </li>
                         </ul>
-}
+                    }
                     <li className="chat-item">
                         <Link
-                            to="/chat"
+                            to="/event"
                             className="nav-link  dark:hover:bg-slate-900 hover:bg-gray-100"
                         >
-                            Chat
+                            Events
                         </Link>
                     </li>
                     <li className="about-item">
@@ -125,12 +125,12 @@ const Header = () => {
                         </Link>
                     </li>
                     <Icon
-                                icon="desktop-computer"
-                                className="h-6 w-6 text-gray-900 dark:text-white cursor-pointer"
-                                onClick={() => setThemeOpen(!themeOpen)}
-                            />
-                            
-                        {themeOpen && 
+                        icon="desktop-computer"
+                        className="h-6 w-6 text-gray-900 dark:text-white cursor-pointer"
+                        onClick={() => setThemeOpen(!themeOpen)}
+                    />
+
+                    {themeOpen &&
                         <ul className="absolute right-[2%] top-[70%] z-[1000] w-32 dark:bg-slate-800 dark:text-white bg-gray-200 rounded-md">
                             <li className="w-full dark:hover:bg-slate-900 hover:bg-gray-100 cursor-pointer">
                                 <span
@@ -184,7 +184,7 @@ const Header = () => {
                                 </span>
                             </li>
                         </ul>
-}
+                    }
                 </ul>
             </nav>
         </>
