@@ -6,34 +6,32 @@ import Home from "./pages/Home";
 import EventPage from "./pages/EventPage";
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Root />,
-        children: [
-            {
-                index: true,
-                element: <Home />,
-            },
-            {
-                path: "/login",
-                element: <Login />,
-            },
-            {
-              path: "/registration",
-              element: <Registration />,
-            },
-            {
-                path: "/event",
-                element: <EventPage  />,
-              },
-            
-        ],
-    },
+  {
+    path: "/",
+    element: <Root />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/registration",
+        element: <Registration />,
+      },
+      {
+        path: "/event",
+        element: <EventPage />,
+      },
+    ],
+  },
 ]);
 
 function App() {
-    return <RouterProvider router={router}></RouterProvider>;
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
-
