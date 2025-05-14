@@ -48,7 +48,7 @@ const Registration: React.FC = () => {
       console.log("response", response);
       alert("Registration successful!");
       if (response.status === 200) {
-        navigate("/");
+        navigate("/login");
       }
     } catch (error) {
       console.error("Registration failed", error);

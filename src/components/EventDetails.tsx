@@ -1,6 +1,7 @@
 import React from "react";
 import { Event } from "./type/Event";
 import Icon from "./utils/Icon";
+import { useNavigate } from "react-router-dom";
 
 interface EventDetailsProps {
   event: Event[]; // or rename to `events` if you prefer
@@ -8,12 +9,19 @@ interface EventDetailsProps {
 
 const EventDetails: React.FC<EventDetailsProps> = ({ event }) => {
   console.log("event", event); // should log your array
+  const navigate = useNavigate();
+  const pageChange = () => {
+    navigate("/details");
+  };
   return (
     <>
       {Array.isArray(event) &&
         event.map((eventItem: Event) => (
           <div key={eventItem.id} className="w-[300px]">
-            <div className="flex flex-col justify-between bg-white/95 h-[100%] shadow-lg shadow-black/40 rounded-md gap-2">
+            <div
+              className="flex flex-col cursor-pointer justify-between bg-white/95 h-[100%] shadow-lg shadow-black/40 rounded-md gap-2"
+              onClick={pageChange}
+            >
               <div className="">
                 <div>
                   <img
