@@ -23,7 +23,7 @@ const Login: React.FC = () => {
     );
     console.log("response", response);
     if (response.status === 200) {
-      navigate("/registration");
+      navigate("/event");
     }
   };
 
