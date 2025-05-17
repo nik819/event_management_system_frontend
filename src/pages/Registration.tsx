@@ -8,6 +8,9 @@ type RegistrationRequest = {
   email: string;
   password: string;
   dateOfBirth: string;
+  mobileNo: string;
+  first_name: string;
+  last_name: string;
 };
 
 const Registration: React.FC = () => {
@@ -16,6 +19,9 @@ const Registration: React.FC = () => {
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [dateOfBirth, setdateOfBirth] = useState<string>("");
+  const [mobileNo, setMobileNo] = useState<string>("");
+  const [first_name, setFirstName] = useState<string>("");
+  const [last_name, setLastName] = useState<string>("");
   const navigate = useNavigate();
 
   const handleRegistration = async (e: React.FormEvent) => {
@@ -26,6 +32,9 @@ const Registration: React.FC = () => {
       password,
       confirmPassword,
       dateOfBirth,
+      mobileNo,
+      first_name,
+      last_name,
     });
 
     if (password !== confirmPassword) {
@@ -38,6 +47,9 @@ const Registration: React.FC = () => {
       email,
       password,
       dateOfBirth,
+      mobileNo,
+      first_name,
+      last_name,
     };
 
     try {
@@ -71,6 +83,42 @@ const Registration: React.FC = () => {
               required={true}
               value={username}
               onChange={(e: any) => setUsername(e.target.value)}
+            />
+          </div>
+          <div>
+            <Input
+              label="First Name"
+              preIcon="user"
+              name="first_name"
+              type="text"
+              placeholder="Enter your first name"
+              required={true}
+              value={first_name}
+              onChange={(e: any) => setFirstName(e.target.value)}
+            />
+          </div>
+          <div>
+            <Input
+              label="Last Name"
+              preIcon="user"
+              name="last_name"
+              type="text"
+              placeholder="Enter your last name"
+              required={true}
+              value={last_name}
+              onChange={(e: any) => setLastName(e.target.value)}
+            />
+          </div>
+          <div>
+            <Input
+              label="Mobile No"
+              preIcon="phone"
+              name="mobileNo"
+              type="text"
+              placeholder="Enter your mobile number"
+              required={true}
+              value={mobileNo}
+              onChange={(e: any) => setMobileNo(e.target.value)}
             />
           </div>
           <div>
