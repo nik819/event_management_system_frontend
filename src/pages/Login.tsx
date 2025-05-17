@@ -4,19 +4,19 @@ import Input from "../components/Input";
 import { Link, useNavigate } from "react-router-dom";
 
 type loginrequest = {
-  emailorusername: string;
+  emailOrUsername: string;
   password: string;
 };
 
 const Login: React.FC = () => {
-  const [emailorusername, setEmail] = useState<string>("");
+  const [emailOrUsername, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login clicked", { emailorusername, password });
-    const request: loginrequest = { emailorusername, password };
+    console.log("Login clicked", { emailOrUsername, password });
+    const request: loginrequest = { emailOrUsername, password };
     const response = await axios.post(
       "http://localhost:8000/client-api/v1/auth/login",
       request
