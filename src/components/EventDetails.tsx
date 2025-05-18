@@ -17,7 +17,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({ event }) => {
     <>
       {Array.isArray(event) &&
         event.map((eventItem: Event) => (
-          <div key={eventItem.id} className="w-[300px]">
+          <div key={eventItem.id} className="w-[calc(100 - 20px)]">
             <div
               className="flex flex-col cursor-pointer justify-between bg-white/95 h-[100%] shadow-lg shadow-black/40 rounded-md gap-2"
               onClick={pageChange}
@@ -27,7 +27,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({ event }) => {
                   <img
                     src="images/portfolio-01.jpg"
                     alt=""
-                    className="h-[200px] w-[300px] rounded-tr-md rounded-tl-md"
+                    className="h-[200px] md:h-full w-full rounded-tr-md rounded-tl-md"
                   />
                 </div>
                 <div className="flex flex-col gap-4 px-4">

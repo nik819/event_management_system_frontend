@@ -102,7 +102,7 @@ export const events: Event[] = [
 
 const EventPage: React.FC = () => (
   <div className="mt-10">
-    <div className="flex flex-wrap justify-between gap-5 px-5 py-8 h-[calc(100vh-40px)] overflow-y-auto">
+    <div className="grid sm:grid-cols-2 md:grid-cols-4 2xl:grid-cols-5 justify-between gap-5 px-5 py-8 h-[calc(100vh-40px)] overflow-y-auto">
       <EventDetails event={events} />
     </div>
   </div>
