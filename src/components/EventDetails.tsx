@@ -60,23 +60,28 @@ const EventDetails: React.FC<EventDetailsProps> = ({ event }) => {
               className="max-w-xs bg-white rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-transform duration-300 flex flex-col justify-between"
               onClick={() => navigate("/details")}
             >
-              {/* Image */}
-              <div>
-                <img
-                  src="images/portfolio6.jpg"
-                  alt=""
-                  className="h-[200px] w-[300px] rounded-tr-md rounded-tl-md"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-4 flex flex-col flex-grow gap-3">
-                <h2 className="text-xl font-semibold text-gray-900 truncate">
-                  {eventItem.title}
-                </h2>
-                <div className="text-sm text-gray-600">{eventItem.venue}</div>
-                <div className="text-sm text-gray-500">
-                  {eventItem.date} {eventItem.time}
+              <div className="">
+                <div>
+                  <img
+                    src="images/portfolio-01.jpg"
+                    alt=""
+                    className="h-[200px] w-[300px] rounded-tr-md rounded-tl-md"
+                  />
+                </div>
+                <div className="flex flex-col gap-4 px-4">
+                  <div>
+                    <span className="font-bold text-2xl">
+                      {eventItem.title}
+                    </span>
+                    <div className="flex flex-col">
+                      <span>{eventItem.venue}</span>
+                      <span className="text-gray-400 text-sm">
+                        {eventItem.date}
+                        {eventItem.time}
+                      </span>
+                    </div>
+                    <div className="line-clamp-4">{eventItem.description}</div>
+                  </div>
                 </div>
                 {/* Limit description height and allow ellipsis */}
                 <p className="text-gray-700 line-clamp-4 flex-grow">
