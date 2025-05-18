@@ -1,64 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import { Event } from "./type/Event";
 import Icon from "./utils/Icon";
 import { useNavigate } from "react-router-dom";
 
 interface EventDetailsProps {
-  event: Event[];
+  event: Event[]; // or rename to `events` if you prefer
 }
 
 const EventDetails: React.FC<EventDetailsProps> = ({ event }) => {
+  console.log("event", event); // should log your array
   const navigate = useNavigate();
-  const [selectedCity, setSelectedCity] = useState<string>("All");
-
-  // Extract unique cities from the event list
-  const cities = Array.from(new Set(event.map((e) => e.venue)));
-
-  const handleCityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCity(e.target.value);
+  const pageChange = () => {
+    navigate("/details");
   };
-
-  // Filter events based on selected city
-  const filteredEvents =
-    selectedCity === "All"
-      ? event
-      : event.filter((e) => e.venue === selectedCity);
-
   return (
-    <div className="px-6 py-8 bg-gray-50 min-h-screen w-full">
-      {/* City Filter Dropdown */}
-      <div className="max-w-md mx-auto mb-8">
-        <label
-          htmlFor="city-filter"
-          className="block mb-2 text-lg font-semibold text-gray-700"
-        >
-          Filter by City:
-        </label>
-        <select
-          id="city-filter"
-          value={selectedCity}
-          onChange={handleCityChange}
-          className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
-        >
-          <option value="All">All Cities</option>
-          {cities.map((city) => (
-            <option key={city} value={city}>
-              {city}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Event Cards */}
-      <div className="flex flex-wrap justify-center gap-8">
-        {filteredEvents.length === 0 ? (
-          <div className="text-gray-500 text-lg">No events found.</div>
-        ) : (
-          filteredEvents.map((eventItem: Event) => (
+    <>
+      {Array.isArray(event) &&
+        event.map((eventItem: Event) => (
+          <div key={eventItem.id} className="w-[300px]">
             <div
-              key={eventItem.id}
-              className="max-w-xs bg-white rounded-lg shadow-lg cursor-pointer transform hover:scale-105 transition-transform duration-300 flex flex-col justify-between"
-              onClick={() => navigate("/details")}
+              className="flex flex-col cursor-pointer justify-between bg-white/95 h-[100%] shadow-lg shadow-black/40 rounded-md gap-2"
+              onClick={pageChange}
             >
               <div className="">
                 <div>
@@ -83,34 +45,28 @@ const EventDetails: React.FC<EventDetailsProps> = ({ event }) => {
                     <div className="line-clamp-4">{eventItem.description}</div>
                   </div>
                 </div>
-                {/* Limit description height and allow ellipsis */}
-                <p className="text-gray-700 line-clamp-4 flex-grow">
-                  {eventItem.description}
-                </p>
               </div>
-
-              {/* Bottom Gender Stats */}
-              <div className="flex divide-x border-t border-gray-200 text-gray-600 rounded-b-lg">
-                <div className="flex items-center justify-center w-1/2 gap-2 p-3 bg-gray-100 rounded-bl-lg">
-                  <Icon icon="user" className="w-6 h-6 text-gray-700" />
-                  <div className="flex flex-col text-sm">
+              <div className="flex gap-1 justify-between w-full">
+                <div className="flex bg-gray-200 w-1/2 rounded-tr-md">
+                  <Icon icon="user" className="w-10 h-10" />
+                  <div className="flex flex-col">
                     <span>10%</span>
                     <span>Male</span>
                   </div>
                 </div>
-                <div className="flex items-center justify-center w-1/2 gap-2 p-3 bg-gray-100 rounded-br-lg">
-                  <Icon icon="user" className="w-6 h-6 text-gray-700" />
-                  <div className="flex flex-col text-sm">
+                <div className="flex bg-gray-200 w-1/2 rounded-tl-md">
+                  <Icon icon="user" className="w-10 h-10" />
+
+                  <div className="flex flex-col">
                     <span>90%</span>
                     <span>Female</span>
                   </div>
                 </div>
               </div>
             </div>
-          ))
-        )}
-      </div>
-    </div>
+          </div>
+        ))}
+    </>
   );
 };
 
