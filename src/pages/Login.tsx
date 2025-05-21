@@ -21,8 +21,12 @@ const Login: React.FC = () => {
       "http://localhost:8000/client-api/v1/auth/login",
       request
     );
-    console.log("response", response);
-    if (response.status === 200) {
+    console.log("response", response.data.challenge);
+    if (response.data.challenge === true) {
+      navigate("/OTP", { state: { userId: response.data.userId } });
+    } else if (response.data.challenge === false) {
+      localStorage.setItem("access", response.data.access);
+      localStorage.setItem("refresh", response.data.refresh);
       navigate("/event");
     }
   };

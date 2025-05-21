@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import EventPage from "./pages/EventPage";
 import ShowEventDetails from "./pages/ShowEventDetails";
 import ForgotPassword from "./pages/ForgonPassword";
+import OTP from "./pages/Otp";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/details",
         element: <ShowEventDetails />,
+      },
+      {
+        path: "/OTP",
+        element: <OTP />,
       },
     ],
   },
