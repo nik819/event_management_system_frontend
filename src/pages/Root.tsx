@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import NavBar from "../components/common/navBar";
+import Sidebar from "../components/common/sidebar";
 
 export default function Root() {
   const location = useLocation();
@@ -8,8 +9,11 @@ export default function Root() {
   return (
     <div className="w-screen h-screen flex flex-col">
       {!isHomePage && <NavBar />}
-      <div className="flex-1 overflow-y-auto ">
-        <Outlet />
+      <div className="w-full flex">
+        <Sidebar />
+        <div className="w-[calc(100%-300px)]">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
