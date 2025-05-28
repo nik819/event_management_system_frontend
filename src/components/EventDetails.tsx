@@ -13,6 +13,7 @@ const EventDetails: React.FC<EventDetailsProps> = ({ event }) => {
   const pageChange = () => {
     navigate("/details");
   };
+
   return (
     <>
       {Array.isArray(event) &&

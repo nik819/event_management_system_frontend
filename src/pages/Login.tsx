@@ -3,6 +3,9 @@ import axios from "axios";
 import Input from "../components/Input";
 import { Link, useNavigate } from "react-router-dom";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 type loginrequest = {
   emailOrUsername: string;
   password: string;
@@ -27,6 +30,7 @@ const Login: React.FC = () => {
     } else if (response.data.challenge === false) {
       localStorage.setItem("access", response.data.access);
       localStorage.setItem("refresh", response.data.refresh);
+      toast.success("Login successful!");
       navigate("/event");
     }
   };
